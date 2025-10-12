@@ -25,6 +25,15 @@ export class AppMenu {
                 items: [{ label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: ['/'] }]
             },
             {
+                label: 'Master Data',
+                icon: 'pi pi-fw pi-briefcase',
+                items: [
+                    { label: 'Customer', icon: 'pi pi-fw pi-users', routerLink: ['master/customer'] },
+                    { label: 'Employee', icon: 'pi pi-fw pi-user', routerLink: ['master/employee'] },
+                    { label: 'Item', icon: 'pi pi-fw pi-list', routerLink: ['master/item'] }
+                ]
+            },
+            {
                 label: 'UI Components',
                 items: [
                     { label: 'Form Layout', icon: 'pi pi-fw pi-id-card', routerLink: ['/uikit/formlayout'] },
