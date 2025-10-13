@@ -1,10 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'avatarLabel'
+    name: 'avatarLabel'
 })
 export class AvatarLabelPipe implements PipeTransform {
-
     transform(value: string | null | undefined): string {
         if (!value) return '';
 
@@ -17,5 +16,4 @@ export class AvatarLabelPipe implements PipeTransform {
 
         return `${firstWord}${lastInitial}`;
     }
-
 }

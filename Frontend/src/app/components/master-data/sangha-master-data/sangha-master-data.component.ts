@@ -8,12 +8,7 @@ import { AreaType, SanghaMasterData, SanghaStatus } from './sangha.modal';
 import { InputIcon } from 'primeng/inputicon';
 import { IconField } from 'primeng/iconfield';
 import { InputText } from 'primeng/inputtext';
-
-interface tab {
-    title: string;
-    value: number;
-    content: SanghaMasterData[];
-}
+import { tab } from '../../common.modals';
 
 @Component({
     selector: 'app-sangha-master-data',

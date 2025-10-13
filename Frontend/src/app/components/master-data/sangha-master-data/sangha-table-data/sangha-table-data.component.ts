@@ -6,8 +6,8 @@ import { Accordion, AccordionContent, AccordionHeader, AccordionPanel } from 'pr
 import { Avatar } from 'primeng/avatar';
 import { Badge } from 'primeng/badge';
 import { SanghaMasterData } from '../sangha.modal';
-import {AvatarLabelPipe} from "../../../../shared/pipes/avatar-label.pipe";
-import {NgClass} from "@angular/common";
+import { AvatarLabelPipe } from '../../../../shared/pipes/avatar-label.pipe';
+import { NgClass } from '@angular/common';
 
 @Component({
     selector: 'app-sangha-table-data',
@@ -16,11 +16,10 @@ import {NgClass} from "@angular/common";
     styleUrl: './sangha-table-data.component.scss'
 })
 export class SanghaTableDataComponent {
-    @Input()
-    areas: SanghaMasterData[] = [];
+    @Input() areas: SanghaMasterData[] = [];
     styles = ['avatar-1', 'avatar-2', 'avatar-3', 'avatar-4'];
 
-    getRandomStyle():string {
+    getRandomStyle(): string {
         const index = Math.floor(Math.random() * this.styles.length);
         return this.styles[index];
     }

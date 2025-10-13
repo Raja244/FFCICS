@@ -1,0 +1,41 @@
+<p-table [value]="sizes" dataKey="sizeNo">
+    <ng-template #header>
+        <tr>
+            <th pSortableColumn="sizeNo" style="width: 26.6%">
+                <div class="flex items-center gap-2">
+                    Size No
+                    <p-sortIcon field="sizeNo" />
+                </div>
+            </th>
+            <th pSortableColumn="fabricRequired" style="width: 26.6%">
+                <div class="flex items-center gap-2">
+                    Fabric Required (pcs)
+                    <p-sortIcon field="fabricRequired" />
+                </div>
+            </th>
+            <th pSortableColumn="price">
+                <div class="flex items-center gap-2" style="width: 26.6%">
+                    Price
+                    <p-sortIcon field="price" />
+                </div>
+            </th>
+            <th style="width: 20%">Actions</th>
+        </tr>
+    </ng-template>
+    <ng-template #body let-size>
+        <tr>
+            <td>{{ size.sizeNo }}</td>
+            <td>{{ size.fabricRequired }}</td>
+            <td>{{ size.price | currency: 'INR' }}</td>
+            <td>
+                <p-button (click)="editProduct(size)" [outlined]="true" [rounded]="true" class="mr-2" icon="pi pi-pencil" />
+                <p-button (click)="deleteProduct(size)" [outlined]="true" [rounded]="true" icon="pi pi-trash" severity="danger" />
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template #emptymessage>
+        <tr>
+            <td colspan="4">There are no Sizes for this Item.</td>
+        </tr>
+    </ng-template>
+</p-table>

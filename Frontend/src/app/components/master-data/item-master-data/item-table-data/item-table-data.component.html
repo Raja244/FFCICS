@@ -1,0 +1,30 @@
+<p-table [tableStyle]="{ 'min-width': '60rem' }" [value]="items" dataKey="itemName">
+    <ng-template #header>
+        <tr>
+            <th style="width: 5rem"></th>
+            <th>Item Name</th>
+            <th>Sizes</th>
+            <th>Price Range</th>
+        </tr>
+    </ng-template>
+    <ng-template #body let-expanded="expanded" let-item>
+        <tr>
+            <td>
+                <p-button [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'" [pRowToggler]="item" [rounded]="true" [text]="true" pRipple severity="secondary" type="button" />
+            </td>
+            <td>{{ item.itemName }}</td>
+            <td>{{ item.availableSizes }}</td>
+            <td>{{ item.priceRange }}</td>
+        </tr>
+    </ng-template>
+    <ng-template #expandedrow let-item>
+        <tr>
+            <td colspan="4">
+                <div class="p-4">
+                    <h5>Sizes for {{ item.itemName }}</h5>
+                    <app-item-size-table-data [sizes]="item.sizes" />
+                </div>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
