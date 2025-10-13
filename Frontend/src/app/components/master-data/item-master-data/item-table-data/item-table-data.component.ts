@@ -4,7 +4,7 @@ import { Button } from 'primeng/button';
 import { FormsModule } from '@angular/forms';
 import { ItemSizeTableDataComponent } from './item-size-table-data/item-size-table-data.component';
 import { Item } from '../item.modal';
-import {Ripple} from "primeng/ripple";
+import { Ripple } from 'primeng/ripple';
 
 @Component({
     selector: 'app-item-table-data',

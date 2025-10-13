@@ -14,18 +14,19 @@
         <p-button (onClick)="openNew()" class="mr-2" icon="pi pi-plus" label="Add New Item" />
     </ng-template>
 </p-toolbar>
-
-<p-tabs [(value)]="selectedTab">
-    <p-tablist>
-        @for (tab of tabs; track tab.value) {
-            <p-tab [value]="tab.value">{{ tab.title }}</p-tab>
-        }
-    </p-tablist>
-    <p-tabpanels>
-        @for (tab of tabs; track tab.value) {
-            <p-tabpanel [value]="tab.value">
-                <app-item-table-data [items]="tab.content" />
-            </p-tabpanel>
-        }
-    </p-tabpanels>
-</p-tabs>
+<div class="card">
+    <p-tabs [(value)]="selectedTab">
+        <p-tablist>
+            @for (tab of tabs; track tab.value) {
+                <p-tab [value]="tab.value">{{ tab.title }}</p-tab>
+            }
+        </p-tablist>
+        <p-tabpanels>
+            @for (tab of tabs; track tab.value) {
+                <p-tabpanel [value]="tab.value">
+                    <app-item-table-data [items]="tab.content" />
+                </p-tabpanel>
+            }
+        </p-tabpanels>
+    </p-tabs>
+</div>
