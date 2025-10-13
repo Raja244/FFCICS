@@ -1,25 +1,25 @@
-import {ChangeDetectorRef, Component, ViewChild} from '@angular/core';
-import {Product, ProductService} from "../../../pages/service/product.service";
-import {Table, TableModule} from "primeng/table";
-import {Dialog} from "primeng/dialog";
-import {SelectModule} from "primeng/select";
-import {ToastModule} from "primeng/toast";
-import {ToolbarModule} from "primeng/toolbar";
-import {ConfirmDialog} from "primeng/confirmdialog";
-import {InputTextModule} from "primeng/inputtext";
-import {TextareaModule} from "primeng/textarea";
-import {CommonModule} from "@angular/common";
-import {FileUpload} from "primeng/fileupload";
-import {DropdownModule} from "primeng/dropdown";
-import {Tag} from "primeng/tag";
-import {RadioButton} from "primeng/radiobutton";
-import {Rating} from "primeng/rating";
-import {FormsModule} from "@angular/forms";
-import {InputNumber} from "primeng/inputnumber";
-import {IconFieldModule} from "primeng/iconfield";
-import {InputIconModule} from "primeng/inputicon";
-import {ConfirmationService, MessageService} from "primeng/api";
-import {Button} from "primeng/button";
+import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
+import { Product, ProductService } from '../../../pages/service/product.service';
+import { Table, TableModule } from 'primeng/table';
+import { Dialog } from 'primeng/dialog';
+import { SelectModule } from 'primeng/select';
+import { ToastModule } from 'primeng/toast';
+import { ToolbarModule } from 'primeng/toolbar';
+import { ConfirmDialog } from 'primeng/confirmdialog';
+import { InputTextModule } from 'primeng/inputtext';
+import { TextareaModule } from 'primeng/textarea';
+import { CommonModule } from '@angular/common';
+import { FileUpload } from 'primeng/fileupload';
+import { DropdownModule } from 'primeng/dropdown';
+import { Tag } from 'primeng/tag';
+import { RadioButton } from 'primeng/radiobutton';
+import { Rating } from 'primeng/rating';
+import { FormsModule } from '@angular/forms';
+import { InputNumber } from 'primeng/inputnumber';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { Button } from 'primeng/button';
 
 interface Column {
     field: string;
@@ -33,11 +33,32 @@ interface ExportColumn {
 }
 
 @Component({
-  selector: 'app-item-master-data',
-  templateUrl: './item-master-data.component.html',
-  styleUrl: './item-master-data.component.scss',
-    imports: [TableModule, Dialog, SelectModule, ToastModule, ToolbarModule, ConfirmDialog, InputTextModule, TextareaModule, CommonModule, FileUpload, DropdownModule, Tag, RadioButton, Rating, InputTextModule, FormsModule, InputNumber, IconFieldModule, InputIconModule, Button],
-    providers: [MessageService, ConfirmationService, ProductService],
+    selector: 'app-item-master-data',
+    templateUrl: './item-master-data.component.html',
+    styleUrl: './item-master-data.component.scss',
+    imports: [
+        TableModule,
+        Dialog,
+        SelectModule,
+        ToastModule,
+        ToolbarModule,
+        ConfirmDialog,
+        InputTextModule,
+        TextareaModule,
+        CommonModule,
+        FileUpload,
+        DropdownModule,
+        Tag,
+        RadioButton,
+        Rating,
+        InputTextModule,
+        FormsModule,
+        InputNumber,
+        IconFieldModule,
+        InputIconModule,
+        Button
+    ],
+    providers: [MessageService, ConfirmationService, ProductService]
 })
 export class ItemMasterDataComponent {
     productDialog: boolean = false;

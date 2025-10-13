@@ -1,0 +1,38 @@
+<div>
+    <p-accordion value="0">
+        @for (area of areas; track area.id) {
+            <p-accordion-panel [value]="area.id">
+                <p-accordion-header>
+                    <ng-template #toggleicon let-active="active">
+                        @if (active) {
+                            <i class="pi pi-minus"></i>
+                        } @else {
+                            <i class="pi pi-plus"></i>
+                        }
+                    </ng-template>
+                    <span class="flex items-center gap-2 w-full">
+                        <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle" />
+                        <span class="font-bold whitespace-nowrap">{{ area.nameOfArea }}</span>
+                        <p-badge [value]="area.sanghas.length" class="ml-auto mr-2" />
+                    </span>
+                </p-accordion-header>
+                <p-accordion-content>
+                    <div class="ml-2 mr-2">
+                        <p-accordion [value]="area.sanghas[0].name">
+                            @for (sangha of area.sanghas; track sangha.name) {
+                                <p-accordion-panel [value]="sangha.name">
+                                    <p-accordion-header>
+                                        {{ sangha.name }}
+                                        <ng-template #toggleicon >
+                                            <p-button label="More Details" />
+                                        </ng-template>
+                                    </p-accordion-header>
+                                </p-accordion-panel>
+                            }
+                        </p-accordion>
+                    </div>
+                </p-accordion-content>
+            </p-accordion-panel>
+        }
+    </p-accordion>
+</div>

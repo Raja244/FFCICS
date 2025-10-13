@@ -28,7 +28,7 @@ export class AppMenu {
                 label: 'Master Data',
                 icon: 'pi pi-fw pi-briefcase',
                 items: [
-                    { label: 'Customer', icon: 'pi pi-fw pi-users', routerLink: ['master/customer'] },
+                    { label: 'Sangha', icon: 'pi pi-fw pi-users', routerLink: ['master/sangha'] },
                     { label: 'Employee', icon: 'pi pi-fw pi-user', routerLink: ['master/employee'] },
                     { label: 'Item', icon: 'pi pi-fw pi-list', routerLink: ['master/item'] }
                 ]

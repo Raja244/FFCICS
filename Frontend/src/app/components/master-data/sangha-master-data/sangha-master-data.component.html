@@ -1,0 +1,33 @@
+<p-toolbar>
+    <ng-template #start>
+        <div class="flex items-center justify-between ml-4">
+            <h5 class="m-0">Manage All Sanghas</h5>
+        </div>
+        <div class="ml-6">
+            <p-iconfield iconPosition="left">
+                <p-inputicon class="pi pi-search" />
+                <input type="text" pInputText placeholder="Search" />
+            </p-iconfield>
+        </div>
+    </ng-template>
+    <ng-template #end>
+        <p-button label="Add New Sangha" icon="pi pi-plus" class="mr-2" (onClick)="openNew()" />
+    </ng-template>
+</p-toolbar>
+
+<div class="card">
+    <p-tabs [(value)]="selectedTab">
+        <p-tablist>
+            @for (tab of tabs; track tab.value) {
+                <p-tab [value]="tab.value">{{ tab.title }}</p-tab>
+            }
+        </p-tablist>
+        <p-tabpanels>
+            @for (tab of tabs; track tab.value) {
+                <p-tabpanel [value]="tab.value">
+                    <app-sangha-table-data [areas]="tab.content" />
+                </p-tabpanel>
+            }
+        </p-tabpanels>
+    </p-tabs>
+</div>

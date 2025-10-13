@@ -1,24 +1,17 @@
 import { Component } from '@angular/core';
-import {Button, ButtonDirective} from "primeng/button";
-import {TableModule} from "primeng/table";
-import {Tag} from "primeng/tag";
-import {Toolbar} from "primeng/toolbar";
-import {Customer, CustomerService} from "../../../pages/service/customer.service";
-import {ProductService} from "../../../pages/service/product.service";
+import { Button, ButtonDirective } from 'primeng/button';
+import { TableModule } from 'primeng/table';
+import { Tag } from 'primeng/tag';
+import { Toolbar } from 'primeng/toolbar';
+import { Customer, CustomerService } from '../../../pages/service/customer.service';
+import { ProductService } from '../../../pages/service/product.service';
 
 @Component({
-  selector: 'app-employee-master-data',
-    imports: [
-        Button,
-        ButtonDirective,
-        TableModule,
-        Tag,
-        Toolbar
-    ],
-  templateUrl: './employee-master-data.component.html',
-  styleUrl: './employee-master-data.component.scss',
-    providers: [CustomerService,ProductService],
-
+    selector: 'app-employee-master-data',
+    imports: [Button, ButtonDirective, TableModule, Tag, Toolbar],
+    templateUrl: './employee-master-data.component.html',
+    styleUrl: './employee-master-data.component.scss',
+    providers: [CustomerService, ProductService]
 })
 export class EmployeeMasterDataComponent {
     customers!: Customer[];
@@ -65,7 +58,5 @@ export class EmployeeMasterDataComponent {
         }
     }
 
-    openNew() {
-
-    }
+    openNew() {}
 }

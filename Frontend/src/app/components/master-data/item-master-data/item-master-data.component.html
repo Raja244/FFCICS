@@ -28,7 +28,7 @@
     <ng-template #header>
         <tr>
             <th style="min-width: 16rem">Code</th>
-            <th pSortableColumn="name" style="min-width:16rem">
+            <th pSortableColumn="name" style="min-width: 16rem">
                 <div class="flex items-center gap-2">
                     Name
                     <p-sortIcon field="name" />
@@ -41,7 +41,7 @@
                     <p-sortIcon field="price" />
                 </div>
             </th>
-            <th pSortableColumn="category" style="min-width:10rem">
+            <th pSortableColumn="category" style="min-width: 10rem">
                 <div class="flex items-center gap-2">
                     Category
                     <p-sortIcon field="category" />
@@ -72,7 +72,7 @@
             <td>{{ product.price | currency: 'USD' }}</td>
             <td>{{ product.category }}</td>
             <td>
-                <p-rating [(ngModel)]="product.rating" [readonly]="true"/>
+                <p-rating [(ngModel)]="product.rating" [readonly]="true" />
             </td>
             <td>
                 <p-tag [value]="product.inventoryStatus" [severity]="getSeverity(product.inventoryStatus)" />
