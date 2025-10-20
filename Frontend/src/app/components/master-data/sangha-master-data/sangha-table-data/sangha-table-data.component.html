@@ -11,7 +11,7 @@
                         }
                     </ng-template>
                     <span class="flex items-center gap-2 w-full">
-                        <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle" />
+                        <p-avatar class="mr-2" [label]="area.nameOfArea | avatarLabel" shape="circle" size="large" [ngClass]="getRandomStyle()"/>
                         <span class="font-bold whitespace-nowrap">{{ area.nameOfArea }}</span>
                         <p-badge [value]="area.sanghas.length" class="ml-auto mr-2" />
                     </span>
