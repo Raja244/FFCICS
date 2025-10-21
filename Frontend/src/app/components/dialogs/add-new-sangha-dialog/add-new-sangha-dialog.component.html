@@ -1,0 +1,73 @@
+<div class="m-4">
+    <div class="flex flex-col gap-6">
+        <!-- Sangha Name -->
+        <div>
+            <label class="block font-bold mb-3" for="sanghaName">Sangha Name</label>
+            <input [(ngModel)]="area.sanghas[0].name" fluid id="sanghaName" pInputText placeholder="Enter Sangha Name" required type="text" />
+        </div>
+
+        <!-- Area -->
+        <div class="grid grid-cols-12 gap-4">
+            <div class="col-span-6">
+                <label class="block font-semibold mb-2" for="areaName">Area Name</label>
+                <p-select [(ngModel)]="area.nameOfArea" [checkmark]="true" [editable]="true" [options]="listOfAreaNames" [showClear]="true" [virtualScrollItemSize]="40" [virtualScroll]="true" fluid placeholder="Select Area Name" />
+            </div>
+            <div class="col-span-6">
+                <label class="block font-semibold mb-2" for="areaType">Area Type</label>
+                <p-select [(ngModel)]="area.areaType" [checkmark]="true" [options]="[AreaType.BLOCK, AreaType.MUNICIPALITY]" fluid placeholder="Select Area Type" />
+            </div>
+        </div>
+
+        <!-- Address -->
+        <p-fieldset legend="Address">
+            <div class="m-3">
+                <div class="grid grid-cols-12 gap-4">
+                    <div class="col-span-6">
+                        <label class="block font-semibold mb-2" for="village">Village</label>
+                        <input [(ngModel)]="area.sanghas[0].address.village" fluid id="village" pInputText placeholder="Village" type="text" />
+                    </div>
+                    <div class="col-span-6">
+                        <label class="block font-semibold mb-2" for="district">District</label>
+                        <input [(ngModel)]="area.sanghas[0].address.district" fluid id="district" pInputText placeholder="District" type="text" />
+                    </div>
+                    <div class="col-span-6">
+                        <label class="block font-semibold mb-2" for="state">State</label>
+                        <input [(ngModel)]="area.sanghas[0].address.state" fluid id="state" pInputText placeholder="State" type="text" />
+                    </div>
+                    <div class="col-span-6">
+                        <label class="block font-semibold mb-2" for="pin">PIN Code</label>
+                        <input [(ngModel)]="area.sanghas[0].address.pinCode" fluid id="pin" pInputText placeholder="PIN Code" type="text" />
+                    </div>
+                </div>
+            </div>
+        </p-fieldset>
+
+        <!-- Representatives -->
+        <p-fieldset legend="Sangha Netri">
+            <div class="m-3">
+                @for (representative of area.sanghas[0].representatives; track representative.name; let i = $index) {
+                    <div class="grid grid-cols-12 gap-4 mb-3">
+                        <div class="col-span-6">
+                            <label class="block font-semibold mb-2" for="">{{ 'Netri ' + (i + 1) + ' Name' }}</label>
+                            <input [(ngModel)]="representative.name" fluid id="" pInputText placeholder="Representative Name" type="text" />
+                        </div>
+                        <div class="col-span-6">
+                            <label class="block font-semibold mb-2" for="">Phone Number</label>
+                            <input [(ngModel)]="representative.phoneNumber" fluid id="" pInputText placeholder="Phone Number" type="text" />
+                        </div>
+                    </div>
+                }
+                <div class="flex justify-between items-center mb-3">
+                    <p-button (click)="addNetri()" icon="pi pi-user-plus" label="Add Netri" text></p-button>
+                    <p-button (click)="deleteNetri()" icon="pi pi-user-minus" label="Delete Netri" severity="danger" text></p-button>
+                </div>
+            </div>
+        </p-fieldset>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="mt-6 flex justify-end gap-2">
+        <p-button (click)="closeDialog()" icon="pi pi-times" label="Cancel" text></p-button>
+        <p-button (click)="saveSangha()" icon="pi pi-check" label="Save"></p-button>
+    </div>
+</div>

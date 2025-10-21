@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Button } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { TreeTableModule } from 'primeng/treetable';
@@ -7,20 +7,15 @@ import { Avatar } from 'primeng/avatar';
 import { Badge } from 'primeng/badge';
 import { SanghaMasterData } from '../sangha.modal';
 import { AvatarLabelPipe } from '../../../../shared/pipes/avatar-label.pipe';
-import { NgClass } from '@angular/common';
+import { UpperCasePipe } from '@angular/common';
 
 @Component({
     selector: 'app-sangha-table-data',
-    imports: [TableModule, TreeTableModule, Accordion, AccordionPanel, AccordionHeader, Avatar, Badge, AccordionContent, Button, AvatarLabelPipe, NgClass],
+    imports: [TableModule, TreeTableModule, Accordion, AccordionPanel, AccordionHeader, Avatar, Badge, AccordionContent, Button, AvatarLabelPipe, UpperCasePipe],
     templateUrl: './sangha-table-data.component.html',
-    styleUrl: './sangha-table-data.component.scss'
+    styleUrl: './sangha-table-data.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SanghaTableDataComponent {
     @Input() areas: SanghaMasterData[] = [];
-    styles = ['avatar-1', 'avatar-2', 'avatar-3', 'avatar-4'];
-
-    getRandomStyle(): string {
-        const index = Math.floor(Math.random() * this.styles.length);
-        return this.styles[index];
-    }
 }

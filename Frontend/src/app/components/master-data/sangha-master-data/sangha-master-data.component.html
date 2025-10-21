@@ -6,12 +6,12 @@
         <div class="ml-6">
             <p-iconfield iconPosition="left">
                 <p-inputicon class="pi pi-search" />
-                <input type="text" pInputText placeholder="Search" />
+                <input pInputText placeholder="Search" type="text" />
             </p-iconfield>
         </div>
     </ng-template>
     <ng-template #end>
-        <p-button label="Add New Sangha" icon="pi pi-plus" class="mr-2" (onClick)="openNew()" />
+        <p-button (onClick)="openAddNewSangha()" class="mr-2" icon="pi pi-plus" label="Add New Sangha" />
     </ng-template>
 </p-toolbar>
 
