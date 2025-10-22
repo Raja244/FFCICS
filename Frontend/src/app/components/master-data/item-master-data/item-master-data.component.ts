@@ -184,7 +184,7 @@ export class ItemMasterDataComponent implements OnInit {
 
     openAddNewItem() {
         this.ref = this.dialogService.open(AddNewItemDialogComponent, {
-            header: 'Add New Sangha',
+            header: 'Add New Item',
             width: '60%',
             modal: true,
             contentStyle: { overflow: 'auto' },

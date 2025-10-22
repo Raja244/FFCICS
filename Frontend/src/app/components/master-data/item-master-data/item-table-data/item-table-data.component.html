@@ -22,7 +22,10 @@
             <td colspan="4">
                 <div class="p-4">
                     <h5>Sizes for {{ item.itemName }}</h5>
-                    <app-item-size-table-data [sizes]="item.sizes" />
+                    <app-item-size-table-data [sizes]="item.sizes" [itemName]="item.itemName" />
+                    <div class="mt-6 flex justify-center gap-2">
+                        <p-button (onClick)="addNewSize(item.itemName)" class="mr-2" icon="pi pi-plus" label="Add New Size" variant="outlined" />
+                    </div>
                 </div>
             </td>
         </tr>
