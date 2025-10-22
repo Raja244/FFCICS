@@ -1,73 +1,292 @@
-<div class="m-4">
-    <div class="flex flex-col gap-6">
-        <!-- Sangha Name -->
-        <div>
-            <label class="block font-bold mb-3" for="sanghaName">Sangha Name</label>
-            <input [(ngModel)]="area.sanghas[0].name" fluid id="sanghaName" pInputText placeholder="Enter Sangha Name" required type="text" />
-        </div>
+<!--<div class="m-4">-->
+<!--    <div class="flex flex-col gap-6">-->
+<!--        &lt;!&ndash; Sangha Name &ndash;&gt;-->
+<!--        <div>-->
+<!--            <label class="block font-bold mb-3" for="sanghaName">Sangha Name</label>-->
+<!--            <input [(ngModel)]="area.sanghas[0].name" fluid id="sanghaName" pInputText placeholder="Enter Sangha Name" required type="text" />-->
+<!--        </div>-->
 
-        <!-- Area -->
-        <div class="grid grid-cols-12 gap-4">
-            <div class="col-span-6">
-                <label class="block font-semibold mb-2" for="areaName">Area Name</label>
-                <p-select [(ngModel)]="area.nameOfArea" [checkmark]="true" [editable]="true" [options]="listOfAreaNames" [showClear]="true" [virtualScrollItemSize]="40" [virtualScroll]="true" fluid placeholder="Select Area Name" />
-            </div>
-            <div class="col-span-6">
-                <label class="block font-semibold mb-2" for="areaType">Area Type</label>
-                <p-select [(ngModel)]="area.areaType" [checkmark]="true" [options]="[AreaType.BLOCK, AreaType.MUNICIPALITY]" fluid placeholder="Select Area Type" />
-            </div>
-        </div>
+<!--        &lt;!&ndash; Area &ndash;&gt;-->
+<!--        <div class="grid grid-cols-12 gap-4">-->
+<!--            <div class="col-span-6">-->
+<!--                <label class="block font-semibold mb-2" for="areaName">Area Name</label>-->
+<!--                <p-select [(ngModel)]="area.nameOfArea" [checkmark]="true" [editable]="true" [options]="listOfAreaNames" [showClear]="true" [virtualScrollItemSize]="40" [virtualScroll]="true" fluid placeholder="Select Area Name" />-->
+<!--            </div>-->
+<!--            <div class="col-span-6">-->
+<!--                <label class="block font-semibold mb-2" for="areaType">Area Type</label>-->
+<!--                <p-select [(ngModel)]="area.areaType" [checkmark]="true" [options]="[AreaType.BLOCK, AreaType.MUNICIPALITY]" fluid placeholder="Select Area Type" />-->
+<!--            </div>-->
+<!--        </div>-->
 
-        <!-- Address -->
-        <p-fieldset legend="Address">
-            <div class="m-3">
-                <div class="grid grid-cols-12 gap-4">
-                    <div class="col-span-6">
-                        <label class="block font-semibold mb-2" for="village">Village</label>
-                        <input [(ngModel)]="area.sanghas[0].address.village" fluid id="village" pInputText placeholder="Village" type="text" />
-                    </div>
-                    <div class="col-span-6">
-                        <label class="block font-semibold mb-2" for="district">District</label>
-                        <input [(ngModel)]="area.sanghas[0].address.district" fluid id="district" pInputText placeholder="District" type="text" />
-                    </div>
-                    <div class="col-span-6">
-                        <label class="block font-semibold mb-2" for="state">State</label>
-                        <input [(ngModel)]="area.sanghas[0].address.state" fluid id="state" pInputText placeholder="State" type="text" />
-                    </div>
-                    <div class="col-span-6">
-                        <label class="block font-semibold mb-2" for="pin">PIN Code</label>
-                        <input [(ngModel)]="area.sanghas[0].address.pinCode" fluid id="pin" pInputText placeholder="PIN Code" type="text" />
-                    </div>
+<!--        &lt;!&ndash; Address &ndash;&gt;-->
+<!--        <p-fieldset legend="Address">-->
+<!--            <div class="m-3">-->
+<!--                <div class="grid grid-cols-12 gap-4">-->
+<!--                    <div class="col-span-6">-->
+<!--                        <label class="block font-semibold mb-2" for="village">Village</label>-->
+<!--                        <input [(ngModel)]="area.sanghas[0].address.village" fluid id="village" pInputText placeholder="Village" type="text" />-->
+<!--                    </div>-->
+<!--                    <div class="col-span-6">-->
+<!--                        <label class="block font-semibold mb-2" for="district">District</label>-->
+<!--                        <input [(ngModel)]="area.sanghas[0].address.district" fluid id="district" pInputText placeholder="District" type="text" />-->
+<!--                    </div>-->
+<!--                    <div class="col-span-6">-->
+<!--                        <label class="block font-semibold mb-2" for="state">State</label>-->
+<!--                        <input [(ngModel)]="area.sanghas[0].address.state" fluid id="state" pInputText placeholder="State" type="text" />-->
+<!--                    </div>-->
+<!--                    <div class="col-span-6">-->
+<!--                        <label class="block font-semibold mb-2" for="pin">PIN Code</label>-->
+<!--                        <input [(ngModel)]="area.sanghas[0].address.pinCode" fluid id="pin" pInputText placeholder="PIN Code" type="text" />-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </p-fieldset>-->
+
+<!--        &lt;!&ndash; Representatives &ndash;&gt;-->
+<!--        <p-fieldset legend="Sangha Netri">-->
+<!--            <div class="m-3">-->
+<!--                @for (representative of area.sanghas[0].representatives; track representative.name; let i = $index) {-->
+<!--                    <div class="grid grid-cols-12 gap-4 mb-3">-->
+<!--                        <div class="col-span-6">-->
+<!--                            <label class="block font-semibold mb-2" for="">{{ 'Netri ' + (i + 1) + ' Name' }}</label>-->
+<!--                            <input [(ngModel)]="representative.name" fluid id="" pInputText placeholder="Representative Name" type="text" />-->
+<!--                        </div>-->
+<!--                        <div class="col-span-6">-->
+<!--                            <label class="block font-semibold mb-2" for="">Phone Number</label>-->
+<!--                            <input [(ngModel)]="representative.phoneNumber" fluid id="" pInputText placeholder="Phone Number" type="text" />-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                }-->
+<!--                <div class="flex justify-between items-center mb-3">-->
+<!--                    <p-button (click)="addNetri()" icon="pi pi-user-plus" label="Add Netri" text></p-button>-->
+<!--                    <p-button (click)="deleteNetri()" icon="pi pi-user-minus" label="Delete Netri" severity="danger" text></p-button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </p-fieldset>-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash; Action Buttons &ndash;&gt;-->
+<!--    <div class="mt-6 flex justify-end gap-2">-->
+<!--        <p-button (click)="closeDialog()" icon="pi pi-times" label="Cancel" text></p-button>-->
+<!--        <p-button (click)="saveSangha()" icon="pi pi-check" label="Save"></p-button>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+<form #sanghaForm="ngForm" (ngSubmit)="saveSangha()" novalidate>
+    <div class="m-4">
+        <div class="flex flex-col gap-6">
+            <!-- Sangha Name -->
+            <div>
+                <label class="block font-bold mb-3" for="sanghaName">Sangha Name</label>
+                <input
+                    [(ngModel)]="area.sanghas[0].name"
+                    name="sanghaName"
+                    id="sanghaName"
+                    pInputText
+                    placeholder="Enter Sangha Name"
+                    required
+                    #sanghaName="ngModel"
+                    [ngClass]="{ 'p-invalid': sanghaName.invalid && sanghaName.touched }"
+                    fluid
+                    type="text"
+                />
+                <small class="text-red-500" *ngIf="sanghaName.invalid && sanghaName.touched">
+                    Sangha name is required.
+                </small>
+            </div>
+
+            <!-- Area -->
+            <div class="grid grid-cols-12 gap-4">
+                <div class="col-span-6">
+                    <label class="block font-semibold mb-2" for="areaName">Area Name</label>
+                    <p-select
+                        [(ngModel)]="area.nameOfArea"
+                        name="areaName"
+                        [checkmark]="true"
+                        [editable]="true"
+                        [options]="listOfAreaNames"
+                        [showClear]="true"
+                        [virtualScrollItemSize]="40"
+                        [virtualScroll]="true"
+                        fluid
+                        placeholder="Select Area Name"
+                        required
+                        #areaName="ngModel"
+                        [ngClass]="{ 'p-invalid': areaName.invalid && areaName.touched }"
+                    />
+                    <small class="text-red-500" *ngIf="areaName.invalid && areaName.touched">
+                        Area name is required.
+                    </small>
+                </div>
+
+                <div class="col-span-6">
+                    <label class="block font-semibold mb-2" for="areaType">Area Type</label>
+                    <p-select
+                        [(ngModel)]="area.areaType"
+                        name="areaType"
+                        [checkmark]="true"
+                        [options]="[AreaType.BLOCK, AreaType.MUNICIPALITY]"
+                        fluid
+                        placeholder="Select Area Type"
+                        required
+                        #areaType="ngModel"
+                        [ngClass]="{ 'p-invalid': areaType.invalid && areaType.touched }"
+                    />
+                    <small class="text-red-500" *ngIf="areaType.invalid && areaType.touched">
+                        Area type is required.
+                    </small>
                 </div>
             </div>
-        </p-fieldset>
 
-        <!-- Representatives -->
-        <p-fieldset legend="Sangha Netri">
-            <div class="m-3">
-                @for (representative of area.sanghas[0].representatives; track representative.name; let i = $index) {
-                    <div class="grid grid-cols-12 gap-4 mb-3">
+            <!-- Address -->
+            <p-fieldset legend="Address">
+                <div class="m-3">
+                    <div class="grid grid-cols-12 gap-4">
                         <div class="col-span-6">
-                            <label class="block font-semibold mb-2" for="">{{ 'Netri ' + (i + 1) + ' Name' }}</label>
-                            <input [(ngModel)]="representative.name" fluid id="" pInputText placeholder="Representative Name" type="text" />
+                            <label class="block font-semibold mb-2" for="village">Village</label>
+                            <input
+                                [(ngModel)]="area.sanghas[0].address.village"
+                                name="village"
+                                id="village"
+                                pInputText
+                                placeholder="Village"
+                                required
+                                #village="ngModel"
+                                [ngClass]="{ 'p-invalid': village.invalid && village.touched }"
+                                fluid
+                                type="text"
+                            />
+                            <small class="text-red-500" *ngIf="village.invalid && village.touched">
+                                Village is required.
+                            </small>
                         </div>
+
                         <div class="col-span-6">
-                            <label class="block font-semibold mb-2" for="">Phone Number</label>
-                            <input [(ngModel)]="representative.phoneNumber" fluid id="" pInputText placeholder="Phone Number" type="text" />
+                            <label class="block font-semibold mb-2" for="district">District</label>
+                            <input
+                                [(ngModel)]="area.sanghas[0].address.district"
+                                name="district"
+                                id="district"
+                                pInputText
+                                placeholder="District"
+                                required
+                                #district="ngModel"
+                                [ngClass]="{ 'p-invalid': district.invalid && district.touched }"
+                                fluid
+                                type="text"
+                            />
+                            <small class="text-red-500" *ngIf="district.invalid && district.touched">
+                                District is required.
+                            </small>
+                        </div>
+
+                        <div class="col-span-6">
+                            <label class="block font-semibold mb-2" for="state">State</label>
+                            <input
+                                [(ngModel)]="area.sanghas[0].address.state"
+                                name="state"
+                                id="state"
+                                pInputText
+                                placeholder="State"
+                                required
+                                #state="ngModel"
+                                [ngClass]="{ 'p-invalid': state.invalid && state.touched }"
+                                fluid
+                                type="text"
+                            />
+                            <small class="text-red-500" *ngIf="state.invalid && state.touched">
+                                State is required.
+                            </small>
+                        </div>
+
+                        <div class="col-span-6">
+                            <label class="block font-semibold mb-2" for="pin">PIN Code</label>
+                            <input
+                                [(ngModel)]="area.sanghas[0].address.pinCode"
+                                name="pin"
+                                id="pin"
+                                pInputText
+                                placeholder="PIN Code"
+                                required
+                                minlength="6"
+                                maxlength="6"
+                                pattern="^[0-9]{6}$"
+                                #pin="ngModel"
+                                [ngClass]="{ 'p-invalid': pin.invalid && pin.touched }"
+                                fluid
+                                type="text"
+                            />
+                            <small class="text-red-500" *ngIf="pin.errors?.['required'] && pin.touched">
+                                PIN code is required.
+                            </small>
+                            <small class="text-red-500" *ngIf="pin.errors?.['pattern'] && pin.touched">
+                                Enter a valid 6-digit PIN code.
+                            </small>
                         </div>
                     </div>
-                }
-                <div class="flex justify-between items-center mb-3">
-                    <p-button (click)="addNetri()" icon="pi pi-user-plus" label="Add Netri" text></p-button>
-                    <p-button (click)="deleteNetri()" icon="pi pi-user-minus" label="Delete Netri" severity="danger" text></p-button>
                 </div>
-            </div>
-        </p-fieldset>
-    </div>
+            </p-fieldset>
 
-    <!-- Action Buttons -->
-    <div class="mt-6 flex justify-end gap-2">
-        <p-button (click)="closeDialog()" icon="pi pi-times" label="Cancel" text></p-button>
-        <p-button (click)="saveSangha()" icon="pi pi-check" label="Save"></p-button>
+            <!-- Representatives -->
+            <p-fieldset legend="Sangha Netri">
+                <div class="m-3">
+                    @for (representative of area.sanghas[0].representatives; track representative.name; let i = $index) {
+                        <div class="grid grid-cols-12 gap-4 mb-3">
+                            <div class="col-span-6">
+                                <label class="block font-semibold mb-2">{{ 'Netri ' + (i + 1) + ' Name' }}</label>
+                                <input
+                                    [(ngModel)]="representative.name"
+                                    name="netriName{{i}}"
+                                    pInputText
+                                    placeholder="Representative Name"
+                                    required
+                                    #netriName="ngModel"
+                                    [ngClass]="{ 'p-invalid': netriName.invalid && netriName.touched }"
+                                    fluid
+                                    type="text"
+                                />
+                                <small class="text-red-500" *ngIf="netriName.invalid && netriName.touched">
+                                    Netri name is required.
+                                </small>
+                            </div>
+
+                            <div class="col-span-6">
+                                <label class="block font-semibold mb-2">Phone Number</label>
+                                <input
+                                    [(ngModel)]="representative.phoneNumber"
+                                    name="phone{{i}}"
+                                    pInputText
+                                    placeholder="Phone Number"
+                                    required
+                                    pattern="^[0-9]{10}$"
+                                    #phone="ngModel"
+                                    [ngClass]="{ 'p-invalid': phone.invalid && phone.touched }"
+                                    fluid
+                                    type="text"
+                                />
+                                <small class="text-red-500" *ngIf="phone.errors?.['required'] && phone.touched">
+                                    Phone number is required.
+                                </small>
+                                <small class="text-red-500" *ngIf="phone.errors?.['pattern'] && phone.touched">
+                                    Enter a valid 10-digit number.
+                                </small>
+                            </div>
+                        </div>
+                    }
+
+                    <div class="flex justify-between items-center mb-3">
+                        <p-button (click)="addNetri()" icon="pi pi-user-plus" label="Add Netri" text type="button"></p-button>
+                        <p-button (click)="deleteNetri()" icon="pi pi-user-minus" label="Delete Netri" severity="danger" text type="button"></p-button>
+                    </div>
+                </div>
+            </p-fieldset>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="mt-6 flex justify-end gap-2">
+            <p-button (click)="closeDialog()" icon="pi pi-times" label="Cancel" text type="button"></p-button>
+            <p-button icon="pi pi-check" label="Save" type="submit" [disabled]="sanghaForm.invalid"></p-button>
+        </div>
     </div>
-</div>
+</form>

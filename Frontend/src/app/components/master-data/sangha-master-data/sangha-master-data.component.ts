@@ -167,6 +167,7 @@ export class SanghaMasterDataComponent implements OnInit {
             width: '60%',
             contentStyle: { overflow: 'auto' },
             baseZIndex: 10000,
+            modal:true,
             maximizable: true,
             closable: true,
             closeOnEscape: true,
@@ -176,7 +177,6 @@ export class SanghaMasterDataComponent implements OnInit {
         });
 
         this.ref.onClose.subscribe((area: SanghaMasterData) => {
-            console.log(area);
             if (area && area.nameOfArea) {
                 this.updateAreas(area);
             }

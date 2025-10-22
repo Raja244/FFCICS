@@ -1,18 +1,16 @@
 export interface Item {
     itemName: string;
-    gender: Gender;
-    availableSizes: string;
-    priceRange: string;
+    gender?: Gender;
     sizes: Size[];
 }
 
 export interface Size {
-    sizeNo: number;
-    fabricRequired: number;
-    price: number;
+    sizeNo?: number;
+    fabricRequired?: number;
+    price?: number;
 }
 
 export enum Gender {
-    BOYS = 'boys',
-    GIRLS = 'girls'
+    BOYS = 'BOYS',
+    GIRLS = 'GIRLS'
 }

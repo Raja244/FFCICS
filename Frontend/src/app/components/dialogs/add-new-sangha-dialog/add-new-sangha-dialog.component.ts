@@ -6,19 +6,19 @@ import { InputText } from 'primeng/inputtext';
 import { DialogService, DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { AreaType, SanghaMasterData } from '../../master-data/sangha-master-data/sangha.modal';
 import { Fieldset } from 'primeng/fieldset';
+import {NgClass, NgIf} from "@angular/common";
 
 @Component({
     selector: 'app-add-new-sangha-dialog',
-    imports: [FormsModule, Button, Select, InputText, Fieldset],
+    imports: [FormsModule, Button, Select, InputText, Fieldset, NgClass, NgIf],
     templateUrl: './add-new-sangha-dialog.component.html',
     styleUrl: './add-new-sangha-dialog.component.scss',
     providers: [DialogService]
 })
 export class AddNewSanghaDialogComponent {
-    statuses: any[] | undefined;
     area: SanghaMasterData = {
-        nameOfArea: '',
-        areaType: AreaType.MUNICIPALITY,
+        nameOfArea: undefined,
+        areaType: undefined,
         sanghas: [
             {
                 name: '',

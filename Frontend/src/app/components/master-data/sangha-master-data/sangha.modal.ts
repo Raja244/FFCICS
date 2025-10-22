@@ -23,7 +23,7 @@ export interface Sangha {
 }
 
 export interface SanghaMasterData {
-    nameOfArea: string;
-    areaType: AreaType;
+    nameOfArea?: string;
+    areaType?: AreaType;
     sanghas: Sangha[];
 }

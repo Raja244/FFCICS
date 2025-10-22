@@ -13,8 +13,8 @@
                 <p-button [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'" [pRowToggler]="item" [rounded]="true" [text]="true" pRipple severity="secondary" type="button" />
             </td>
             <td>{{ item.itemName }}</td>
-            <td>{{ item.availableSizes }}</td>
-            <td>{{ item.priceRange }}</td>
+            <td>{{ getAvailableSizes(item.itemName) }}</td>
+            <td>{{ getPriceRange(item.itemName) }}</td>
         </tr>
     </ng-template>
     <ng-template #expandedrow let-item>

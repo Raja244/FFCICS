@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../../../pages/service/product.service';
 import { TableModule } from 'primeng/table';
 import { SelectModule } from 'primeng/select';
 import { ToastModule } from 'primeng/toast';
@@ -11,12 +10,15 @@ import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
-import { ConfirmationService, MessageService } from 'primeng/api';
 import { Button } from 'primeng/button';
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from 'primeng/tabs';
 import { tab } from '../../common.modals';
 import { ItemTableDataComponent } from './item-table-data/item-table-data.component';
 import { Gender, Item } from './item.modal';
+import {AddNewSanghaDialogComponent} from "../../dialogs/add-new-sangha-dialog/add-new-sangha-dialog.component";
+import {SanghaMasterData} from "../sangha-master-data/sangha.modal";
+import {DialogService, DynamicDialogRef} from "primeng/dynamicdialog";
+import {AddNewItemDialogComponent} from "../../dialogs/add-new-item-dialog/add-new-item-dialog.component";
 
 @Component({
     selector: 'app-item-master-data',
@@ -43,12 +45,17 @@ import { Gender, Item } from './item.modal';
         ItemTableDataComponent,
         Tab
     ],
-    providers: [MessageService, ConfirmationService, ProductService]
+    providers: [DialogService]
 })
 export class ItemMasterDataComponent implements OnInit {
     selectedTab = 0;
     tabs: tab[] = [];
     items: Item[] = [];
+    ref: DynamicDialogRef | undefined;
+
+    constructor(
+        public dialogService: DialogService,
+    ) {}
 
     ngOnInit(): void {
         this.loadItemData();
@@ -75,8 +82,6 @@ export class ItemMasterDataComponent implements OnInit {
             {
                 itemName: 'T-Shirt Classic',
                 gender: Gender.BOYS,
-                availableSizes: '24, 26, 28, 30',
-                priceRange: '150 - 250',
                 sizes: [
                     { sizeNo: 24, fabricRequired: 0.8, price: 150 },
                     { sizeNo: 26, fabricRequired: 0.9, price: 180 },
@@ -87,8 +92,6 @@ export class ItemMasterDataComponent implements OnInit {
             {
                 itemName: 'T-Shirt Cute Print',
                 gender: Gender.GIRLS,
-                availableSizes: '22, 24, 26, 28',
-                priceRange: '160 - 260',
                 sizes: [
                     { sizeNo: 22, fabricRequired: 0.7, price: 160 },
                     { sizeNo: 24, fabricRequired: 0.8, price: 190 },
@@ -99,8 +102,6 @@ export class ItemMasterDataComponent implements OnInit {
             {
                 itemName: 'Shirt Formal',
                 gender: Gender.BOYS,
-                availableSizes: '28, 30, 32',
-                priceRange: '250 - 350',
                 sizes: [
                     { sizeNo: 28, fabricRequired: 1.2, price: 250 },
                     { sizeNo: 30, fabricRequired: 1.3, price: 300 },
@@ -110,8 +111,6 @@ export class ItemMasterDataComponent implements OnInit {
             {
                 itemName: 'Frock Floral',
                 gender: Gender.GIRLS,
-                availableSizes: '20, 22, 24, 26',
-                priceRange: '200 - 320',
                 sizes: [
                     { sizeNo: 20, fabricRequired: 0.9, price: 200 },
                     { sizeNo: 22, fabricRequired: 1.0, price: 240 },
@@ -122,8 +121,6 @@ export class ItemMasterDataComponent implements OnInit {
             {
                 itemName: 'Jeans Slim Fit',
                 gender: Gender.BOYS,
-                availableSizes: '26, 28, 30, 32',
-                priceRange: '350 - 500',
                 sizes: [
                     { sizeNo: 26, fabricRequired: 1.0, price: 350 },
                     { sizeNo: 28, fabricRequired: 1.1, price: 400 },
@@ -134,8 +131,6 @@ export class ItemMasterDataComponent implements OnInit {
             {
                 itemName: 'Skirt Pleated',
                 gender: Gender.GIRLS,
-                availableSizes: '22, 24, 26, 28',
-                priceRange: '220 - 350',
                 sizes: [
                     { sizeNo: 22, fabricRequired: 0.7, price: 220 },
                     { sizeNo: 24, fabricRequired: 0.8, price: 260 },
@@ -146,8 +141,6 @@ export class ItemMasterDataComponent implements OnInit {
             {
                 itemName: 'Shorts Casual',
                 gender: Gender.BOYS,
-                availableSizes: '24, 26, 28',
-                priceRange: '180 - 260',
                 sizes: [
                     { sizeNo: 24, fabricRequired: 0.6, price: 180 },
                     { sizeNo: 26, fabricRequired: 0.7, price: 220 },
@@ -157,8 +150,6 @@ export class ItemMasterDataComponent implements OnInit {
             {
                 itemName: 'Leggings Stretch',
                 gender: Gender.GIRLS,
-                availableSizes: '20, 22, 24, 26, 28',
-                priceRange: '150 - 230',
                 sizes: [
                     { sizeNo: 20, fabricRequired: 0.5, price: 150 },
                     { sizeNo: 22, fabricRequired: 0.6, price: 170 },
@@ -170,8 +161,6 @@ export class ItemMasterDataComponent implements OnInit {
             {
                 itemName: 'Hoodie Warm',
                 gender: Gender.BOYS,
-                availableSizes: '28, 30, 32, 34',
-                priceRange: '400 - 600',
                 sizes: [
                     { sizeNo: 28, fabricRequired: 1.3, price: 400 },
                     { sizeNo: 30, fabricRequired: 1.4, price: 450 },
@@ -182,8 +171,6 @@ export class ItemMasterDataComponent implements OnInit {
             {
                 itemName: 'Dress Party Wear',
                 gender: Gender.GIRLS,
-                availableSizes: '24, 26, 28, 30',
-                priceRange: '450 - 700',
                 sizes: [
                     { sizeNo: 24, fabricRequired: 1.2, price: 450 },
                     { sizeNo: 26, fabricRequired: 1.3, price: 520 },
@@ -194,12 +181,28 @@ export class ItemMasterDataComponent implements OnInit {
             {
                 itemName: 'Dress Party Wear B',
                 gender: Gender.GIRLS,
-                availableSizes: '24, 26, 28, 30',
-                priceRange: '450 - 700',
                 sizes: []
             }
         ];
     }
 
-    openNew() {}
+    openAddNewItem() {
+        this.ref = this.dialogService.open(AddNewItemDialogComponent, {
+            header: 'Add New Sangha',
+            width: '60%',
+            modal:true,
+            contentStyle: { overflow: 'auto' },
+            baseZIndex: 10000,
+            maximizable: true,
+            closable: true,
+            closeOnEscape: true,
+        });
+
+        this.ref.onClose.subscribe((item?:Item) => {
+            if(item){
+                this.items.push(item);
+                this.loadTabs();
+            }
+        });
+    }
 }

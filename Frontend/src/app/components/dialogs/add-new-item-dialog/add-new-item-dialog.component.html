@@ -1,0 +1,161 @@
+<form #itemForm="ngForm" (ngSubmit)="saveItem()" novalidate>
+    <div class="m-4">
+        <div class="flex flex-col gap-6">
+            <!-- Item Name and Gender -->
+            <div class="grid grid-cols-12 gap-4">
+                <div class="col-span-8">
+                    <label class="block font-bold mb-3" for="itemName">Item Name</label>
+                    <input
+                        [(ngModel)]="item.itemName"
+                        name="itemName"
+                        id="itemName"
+                        pInputText
+                        placeholder="Enter Item Name"
+                        required
+                        #itemName="ngModel"
+                        fluid
+                    />
+                    <small
+                        class="text-red-500"
+                        *ngIf="itemName.invalid && itemName.touched"
+                    >
+                        Item name is required.
+                    </small>
+                </div>
+
+                <div class="col-span-4">
+                    <label class="block font-semibold mb-3" for="gender">Gender</label>
+                    <p-select
+                        [(ngModel)]="item.gender"
+                        name="gender"
+                        id="gender"
+                        [options]="[Gender.BOYS, Gender.GIRLS]"
+                        required
+                        #gender="ngModel"
+                        fluid
+                        placeholder="Select Gender"
+                    ></p-select>
+                    <small
+                        class="text-red-500"
+                        *ngIf="gender.invalid && gender.touched"
+                    >
+                        Gender is required.
+                    </small>
+                </div>
+            </div>
+
+            <!-- Sizes -->
+            <p-fieldset legend="Sizes">
+                <div class="m-3">
+                    @for (size of item.sizes; track size.sizeNo; let i = $index) {
+                        <div class="grid grid-cols-12 gap-4 mb-3">
+                            <!-- Size No -->
+                            <div class="col-span-4">
+                                <label class="block font-semibold mb-2">Size No</label>
+                                <input
+                                    [(ngModel)]="size.sizeNo"
+                                    name="sizeNo{{i}}"
+                                    pInputText
+                                    placeholder="Size Number"
+                                    type="number"
+                                    required
+                                    min="1"
+                                    #sizeNo="ngModel"
+                                    fluid
+                                />
+                                <small
+                                    class="text-red-500"
+                                    *ngIf="sizeNo.invalid && sizeNo.touched"
+                                >
+                                    Size number is required.
+                                </small>
+                            </div>
+
+                            <!-- Fabric Required -->
+                            <div class="col-span-4">
+                                <label class="block font-semibold mb-2"
+                                >Fabric Required (m)</label
+                                >
+                                <input
+                                    [(ngModel)]="size.fabricRequired"
+                                    name="fabricRequired{{i}}"
+                                    pInputText
+                                    placeholder="Fabric Required"
+                                    type="number"
+                                    step="0.1"
+                                    min="0.1"
+                                    required
+                                    #fabricRequired="ngModel"
+                                    fluid
+                                />
+                                <small
+                                    class="text-red-500"
+                                    *ngIf="fabricRequired.invalid && fabricRequired.touched"
+                                >
+                                    Fabric required must be at least 0.1m.
+                                </small>
+                            </div>
+
+                            <!-- Price -->
+                            <div class="col-span-4">
+                                <label class="block font-semibold mb-2">Price (₹)</label>
+                                <input
+                                    [(ngModel)]="size.price"
+                                    name="price{{i}}"
+                                    pInputText
+                                    placeholder="Price"
+                                    type="number"
+                                    min="1"
+                                    required
+                                    #price="ngModel"
+                                    fluid
+                                />
+                                <small
+                                    class="text-red-500"
+                                    *ngIf="price.invalid && price.touched"
+                                >
+                                    Price must be greater than 0.
+                                </small>
+                            </div>
+                        </div>
+                    }
+
+                    <div class="flex justify-between items-center mt-4">
+                        <p-button
+                            (click)="addSize()"
+                            icon="pi pi-plus"
+                            label="Add Size"
+                            text
+                            type="button"
+                        ></p-button>
+                        <p-button
+                            (click)="deleteSize()"
+                            icon="pi pi-minus"
+                            label="Delete Size"
+                            severity="danger"
+                            text
+                            type="button"
+                        ></p-button>
+                    </div>
+                </div>
+            </p-fieldset>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="mt-6 flex justify-end gap-2">
+            <p-button
+                (click)="closeDialog()"
+                icon="pi pi-times"
+                label="Cancel"
+                text
+                type="button"
+            ></p-button>
+            <p-button
+                icon="pi pi-check"
+                label="Save"
+                [disabled]="itemForm.invalid"
+                type="submit"
+            ></p-button>
+        </div>
+    </div>
+</form>
