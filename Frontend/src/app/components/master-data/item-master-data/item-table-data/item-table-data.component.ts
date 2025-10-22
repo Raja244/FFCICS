@@ -53,7 +53,7 @@ export class ItemTableDataComponent {
 
         this.ref.onClose.subscribe((size: Size) => {
             if (size) {
-                this.items.find((element) => element.sizes.push(size));
+                this.items.find((element) => element.itemName===itemName)?.sizes.push(size);
             }
         });
     }
