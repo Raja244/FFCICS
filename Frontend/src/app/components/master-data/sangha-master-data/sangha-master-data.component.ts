@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TableModule } from 'primeng/table';
 import { Button } from 'primeng/button';
 import { Toolbar } from 'primeng/toolbar';
@@ -25,9 +25,7 @@ export class SanghaMasterDataComponent implements OnInit {
     selectedTab = 0;
     ref: DynamicDialogRef | undefined;
 
-    constructor(
-        public dialogService: DialogService,
-    ) {}
+    constructor(public dialogService: DialogService) {}
 
     ngOnInit() {
         this.areas = [
@@ -167,6 +165,7 @@ export class SanghaMasterDataComponent implements OnInit {
             width: '60%',
             contentStyle: { overflow: 'auto' },
             baseZIndex: 10000,
+            modal: true,
             maximizable: true,
             closable: true,
             closeOnEscape: true,
@@ -176,7 +175,6 @@ export class SanghaMasterDataComponent implements OnInit {
         });
 
         this.ref.onClose.subscribe((area: SanghaMasterData) => {
-            console.log(area);
             if (area && area.nameOfArea) {
                 this.updateAreas(area);
             }

@@ -1,7 +1,7 @@
 <div>
     <p-accordion value="0">
         @for (area of areas; track area.nameOfArea) {
-            <p-accordion-panel [value]="area.nameOfArea">
+            <p-accordion-panel [value]="area.nameOfArea ?? ''">
                 <p-accordion-header>
                     <ng-template #toggleicon let-active="active">
                         @if (active) {
